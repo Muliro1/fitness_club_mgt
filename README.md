@@ -30,6 +30,7 @@ https://github.com/Muliro1/fitness_club_mgt
 ## Usage
 get into the root directory.
 Activate venv with source fitness/bin/activate
+flask run
 
 ## Questions
 ![user profile image](https://avatars.githubusercontent.com/u/22881664?v=4)
