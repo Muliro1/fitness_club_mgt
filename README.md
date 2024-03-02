@@ -28,7 +28,8 @@ Flask-python Flask-sql_alchemy bootstrap html css
 https://github.com/Muliro1/fitness_club_mgt
 
 ## Usage
-Activate venv with source/bin/activate
+get into the root directory.
+Activate venv with source fitness/bin/activate
 
 ## Questions
 ![user profile image](https://avatars.githubusercontent.com/u/22881664?v=4)
