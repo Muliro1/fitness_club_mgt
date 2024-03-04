@@ -47,8 +47,8 @@ WTForms==3.1.2
 https://github.com/Muliro1/fitness_club_mgt
 
 ## Usage
-get into the root directory.
-Activate venv with the command: source fitness/bin/activate
+get into the project root directory.
+Activate the virtual environment with the command: source fitness/bin/activate
 install project dependencies with this command: pip install -r requirements.txt
 Start the server with this command: python3 run.py to run in debugger mode.
 Use the command: "flask run" to start the server without debug mode. 
