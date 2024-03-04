@@ -30,7 +30,9 @@ https://github.com/Muliro1/fitness_club_mgt
 ## Usage
 get into the root directory.
 Activate venv with source fitness/bin/activate
-flask run
+install project dependencies with this command: pip install -r requirements.txt
+Start the server with this command:python3 run.py to run in debugger mode. Use "flask run" to start
+without debug mode.
 
 ## Questions
 ![user profile image](https://avatars.githubusercontent.com/u/22881664?v=4)
