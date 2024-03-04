@@ -1,16 +1,32 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1 class="media content-section">DAILY CLASS SCHEDULE</h1>
-    {% for class in classes %}
+    {% if current_user.is_authenticated %}
+    <h1 class="media content-section">User Posts</h1>
+    {% for post in posts %}
         <article class="media content-section">
+          <img class="rounded-circle article-img", src="{{ url_for('static', filename='pics/' + post.author.image_file) }}">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ class.day }}</a>
-              <small class="text-muted">{{ class.date_posted }}</small>
+              <a class="mr-2" href="#">{{ post.author.username }}</a>
+              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
             </div>
-            <h2><a class="article-title" href="#">{{ class.title }}</a></h2>
-            <p class="article-content">{{ class.content }}</p>
+            <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
           </div>
         </article>
     {% endfor %}
+    {% else %}
+    {% for class in classes %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ class.day }}</a>
+          <small class="text-muted">{{ class.title }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ class.content }}</a></h2>
+        <p class="article-content">{{ class.date_posted }}</p>
+      </div>
+    </article>
+    {% endfor %}
+    {% endif %}
 {% endblock content %}
