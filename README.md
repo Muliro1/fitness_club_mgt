@@ -22,17 +22,20 @@ type the command source fitness/bin/activate.  #make sure you are in the root fo
 
 
 ## TechUsed
-Flask-python Flask-sql_alchemy bootstrap html css
+Flask-python 
+flask-sqlalchemy
+Bootstrap
+flask-wtforms
 
 ## Link
 https://github.com/Muliro1/fitness_club_mgt
 
 ## Usage
 get into the root directory.
-Activate venv with source fitness/bin/activate
+Activate venv with the command: source fitness/bin/activate
 install project dependencies with this command: pip install -r requirements.txt
-Start the server with this command:python3 run.py to run in debugger mode. Use "flask run" to start
-without debug mode.
+Start the server with this command: python3 run.py to run in debugger mode.
+Use the command: "flask run" to start the server without debug mode. 
 
 ## Questions
 ![user profile image](https://avatars.githubusercontent.com/u/22881664?v=4)
