@@ -68,6 +68,22 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
+                    {{ form.body_mass_index.label(class="form-control-label") }}
+
+                    {% if form.body_mass_index.errors %}
+                        {{ form.body_mass_index(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.body_mass_index.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.body_mass_index(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <p>{{ current_user.fitness_status[-1] }}</p>
+
+                <div class="form-group">
                     {{ form.picture.label() }}
                     {{ form.picture(class="form-control-file") }}
                     {% if form.picture.errors %}

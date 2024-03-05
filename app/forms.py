@@ -39,12 +39,11 @@ class AccountUpdateForm(FlaskForm):
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    weight = DecimalField('Weight',
+    weight = FloatField('Weight',
                           validators=[DataRequired()])
-    height = DecimalField('Height',
+    height = FloatField('Height',
                           validators=[DataRequired()])
-    body_mass_index = DecimalField('BMI',
-                          validators=[DataRequired()])
+    body_mass_index = FloatField('bmi')
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update Account')
 
@@ -59,6 +58,7 @@ class AccountUpdateForm(FlaskForm):
             email = User.query.filter_by(email=email.data).first()
             if email:
                 raise ValidationError('Email is already taken, please choose a different one.')
+
             
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])

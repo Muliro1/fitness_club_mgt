@@ -2,7 +2,7 @@ from app import app, db, bcrypt
 from sqlalchemy.event import listen
 from flask import render_template, url_for, flash, redirect, request, abort
 from app.forms import RegistrationForm, LoginForm, AccountUpdateForm, PostForm
-from app.models import User, Post
+from app.models import User, Post, Physical
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets
 import os
@@ -115,14 +115,18 @@ def account():
         if form.picture.data:
             pic_file = save_profile_picture(form.picture.data)
             current_user.image_file = pic_file
+        bmi = form.weight.data / form.height.data ** 2
+        physical = Physical(weight=form.weight.data, height=form.height.data, user_id=current_user.id, bmi=bmi)
         current_user.username = form.username.data
         current_user.email = form.email.data
+        db.session.add(physical)
         db.session.commit()
         flash('Your account info has been updated successfully', 'success')
         return redirect(url_for('account'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
+        #form.body_mass_index.data = current_user.fitness_status[-1]
     image_file = url_for('static', filename='pics/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 
