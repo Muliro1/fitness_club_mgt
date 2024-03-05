@@ -126,7 +126,6 @@ def account():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
-        #form.body_mass_index.data = current_user.fitness_status[-1]
     image_file = url_for('static', filename='pics/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 

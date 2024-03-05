@@ -41,4 +41,4 @@ class Physical(db.Model):
     bmi = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return f"your body mass index is('{self.bmi}')"
+        return f"your height is '{self.height}'metres, your weight is '{self.weight}' kg and bmi is '{self.bmi}'"
