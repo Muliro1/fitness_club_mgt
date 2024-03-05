@@ -7,6 +7,8 @@ from app.models import User
 
 
 class RegistrationForm(FlaskForm):
+    """Defines the user registration form
+    and all its fields"""
     username = StringField('Username',
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
@@ -28,6 +30,7 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
+    """defines the user login form and all its fields"""
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -35,6 +38,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 class AccountUpdateForm(FlaskForm):
+    """defines the account update form ald all its fields"""
     username = StringField('Username',
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
@@ -48,12 +52,15 @@ class AccountUpdateForm(FlaskForm):
     submit = SubmitField('Update Account')
 
     def validate_username(self, username):
+        """validates the presence of username within the form"""
         if username.data != current_user.username:
             user = User.query.filter_by(username=username.data).first()
             if user:
                 raise ValidationError('username is already taken please choose a different one')
         
     def validate_email(self, email):
+        """validates the presence of email within 
+        the form before submitting"""
         if email.data != current_user.email:
             email = User.query.filter_by(email=email.data).first()
             if email:
@@ -61,6 +68,8 @@ class AccountUpdateForm(FlaskForm):
 
             
 class PostForm(FlaskForm):
+    """defines the user post form for posting
+    on the site"""
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')

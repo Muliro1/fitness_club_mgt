@@ -1,14 +1,18 @@
 from app import db, login_manager
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask_login import UserMixin
 
 @login_manager.user_loader
 def load_user(user_id):
+    #loads current_user
     return User.query.get(int(user_id))
 
 
 
 class User(db.Model, UserMixin):
+    """
+    defines the user table within the database
+    """
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -16,14 +20,18 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
     fitness_status = db.relationship('Physical', backref='member', lazy=True)
+    subscription = db.relationship('Monthly', backref='subscribed', lazy=True)
 
 
 
     def __repr__(self):
+        """prints the representation of a user
+        """
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 
 class Post(db.Model):
+    """defines the posts table within the database"""
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -31,9 +39,11 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
+        """post representation"""
         return f"Post('{self.title}', '{self.date_posted}')"
     
 class Physical(db.Model):
+    """defines the physical table within the database"""
     id = db.Column(db.Integer, primary_key=True)
     weight = db.Column(db.Integer, nullable=False)
     height = db.Column(db.Integer, nullable=False)
@@ -41,4 +51,13 @@ class Physical(db.Model):
     bmi = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
+        """physical table representation"""
         return f"your height is '{self.height}'metres, your weight is '{self.weight}' kg and bmi is '{self.bmi}'"
+    
+class Monthly(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    end_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow + timedelta(days = 28))
+    price = db.Column(db.Integer, nullable=False)
+    
