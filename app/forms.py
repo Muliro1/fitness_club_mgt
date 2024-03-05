@@ -43,7 +43,7 @@ class AccountUpdateForm(FlaskForm):
                           validators=[DataRequired()])
     height = FloatField('Height',
                           validators=[DataRequired()])
-    body_mass_index = FloatField('bmi')
+    #body_mass_index = FloatField('bmi')
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update Account')
 
