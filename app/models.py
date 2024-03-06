@@ -1,4 +1,4 @@
-from app import db, login_manager
+from app import db, login_manager, app
 from datetime import datetime, timedelta
 from flask_login import UserMixin
 
@@ -20,14 +20,16 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
     fitness_status = db.relationship('Physical', backref='member', lazy=True)
-    subscription = db.relationship('Monthly', backref='subscribed', lazy=True)
+    monthly_subscriptions = db.relationship('Monthly', backref='subscribed_monthly', lazy=True)
+    annual_subscriptions = db.relationship('Annually', backref='subscribed_annually', lazy=True)
+    bi_annual_subscriptions = db.relationship('BiAnnually', backref='subscribed_bi_annually', lazy=True)
 
 
 
     def __repr__(self):
         """prints the representation of a user
         """
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+        return f"User('{self.username}', '{self.email}') subscribed to ('{self.subscription}')"
 
 
 class Post(db.Model):
@@ -56,8 +58,31 @@ class Physical(db.Model):
     
 class Monthly(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)                 
     start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    end_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow + timedelta(days = 28))
+    end_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow() + timedelta(days = 28))
     price = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
     
+class Annually(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)                 
+    start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    end_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow() + timedelta(months = 12))
+    price = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
+    
+class BiAnnually(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)                 
+    start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    end_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow() + timedelta(months = 6))
+    price = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
+        
