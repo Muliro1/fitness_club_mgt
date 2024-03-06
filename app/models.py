@@ -57,6 +57,7 @@ class Physical(db.Model):
         return f"your height is '{self.height}'metres, your weight is '{self.weight}' kg and bmi is '{self.bmi}'"
     
 class Monthly(db.Model):
+    ''' defines the monthly subscription model within the database'''
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)                 
     start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -67,6 +68,7 @@ class Monthly(db.Model):
         return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
     
 class Annually(db.Model):
+    ''' defines the annual subscription model'''
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)                 
     start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -77,6 +79,7 @@ class Annually(db.Model):
         return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
     
 class BiAnnually(db.Model):
+    '''defines the half yearlysubscription model'''
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)                 
     start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
