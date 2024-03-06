@@ -1,5 +1,6 @@
 from app import db, login_manager, app
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 from flask_login import UserMixin
 
 @login_manager.user_loader
@@ -29,7 +30,8 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         """prints the representation of a user
         """
-        return f"User('{self.username}', '{self.email}') subscribed to ('{self.subscription}')"
+        all_subs = [self.monthly_subscriptions, self.annual_subscriptions, self.bi_annual_subscriptions]
+        return f"User('{self.username}', '{self.email}') subscribed to ('{all_subs}')"
 
 
 class Post(db.Model):
@@ -72,7 +74,7 @@ class Annually(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)                 
     start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    end_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow() + timedelta(months = 12))
+    end_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow() + relativedelta(months = 12))
     price = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
@@ -83,9 +85,17 @@ class BiAnnually(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)                 
     start_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    end_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow() + timedelta(months = 6))
+    end_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow() + relativedelta(months = 6))
     price = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
         
+
+user_1 = User(username='Michael', email='mulirokhaemba@gmail.com', password='nihilpraeteroptimum')
+user_2 = User(username='Khaemba', email='khaemba@gmail.com', password='nihilpraeteroptimum')
+user_3 = User(username='Muliro', email='muliro@gmail.com', password='nihilpraeteroptimum')
+
+sub_monthly = Monthly(user_id=1, price=5000, subscribed_monthly=user_1)
+sub_yearly = Annually(user_id=2, price=50000, subscribed_annually=user_2)
+sub_bi_yearly = BiAnnually(user_id=3, price=25000, subscribed_bi_annually=user_3)
