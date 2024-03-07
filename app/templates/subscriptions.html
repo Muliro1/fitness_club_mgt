@@ -1,54 +1,67 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Subscription Models</h1>
+    <h1>Subcribe and become a member!!</h1>
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <div class="form-group">
-                    {{ form.annually.label(class="form-control-label") }}
 
-                    {% if form.annually.errors %}
-                        {{ form.annually(class="form-control form-control-lg is-invalid") }}
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.annually.errors %}
+                            {% for error in form.username.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.annually(class="btn btn-outline-info form-control-lg") }}
+                        {{ form.username(class="form-control form-control-lg") }}
                     {% endif %}
-                </div>
-                <div class="form-group">
-                    {{ form.bi_annually.label(class="form-control-label") }}
-
-                    {% if form.bi_annually.errors %}
-                        {{ form.annually(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.bi_annually.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.bi_annually(class="btn btn-outline-info") }}
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    {{ form.monthly.label(class="form-control-label") }}
-
-                    {% if form.monthly.errors %}
-                        {{ form.monthly(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.monthly.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.monthly(class="btn btn-outline-info") }}
-                    {% endif %}
-                </div>
-                
+                    <div class="form-group">
+                        {{ form.email.label(class="form-control-label") }}
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label(class="form-control-label") }}
+                        {% if form.password.errors %}
+                            {{ form.password(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.password(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.subscription.label(class="form-control-label") }}
+                        {% if form.subscription.errors %}
+                            {{ form.subscription(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.subscription.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.subscription(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
             </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
         </form>
     </div>
     

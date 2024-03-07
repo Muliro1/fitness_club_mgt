@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FloatField, DecimalField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FloatField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from app.models import User
 
@@ -75,6 +75,9 @@ class PostForm(FlaskForm):
     submit = SubmitField('Post')
 
 class SubscriptionForm(FlaskForm):
-    monthly = SubmitField('Subscribe Monthly')
-    bi_annually = SubmitField('Subscribe Bi_annually')
-    annually = SubmitField('Subscribe Annually')
+    ''' defines the user subscription form'''
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    email = StringField('email', validators=[DataRequired(), Length(min=2, max=20)])
+    password = PasswordField('Password', validators=[DataRequired()])
+    subscription = SelectField(u'Subscription model', choices = [('monthly'), ('annually'), ('bi_annually')])
+    submit = SubmitField('subscribe')
