@@ -1,6 +1,56 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Subscription Models</h1>
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                    {{ form.annually.label(class="form-control-label") }}
+
+                    {% if form.annually.errors %}
+                        {{ form.annually(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.annually.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.annually(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.bi_annually.label(class="form-control-label") }}
+
+                    {% if form.bi_annually.errors %}
+                        {{ form.annually(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.bi_annually.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.bi_annually(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.monthly.label(class="form-control-label") }}
+
+                    {% if form.monthly.errors %}
+                        {{ form.monthly(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.monthly.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.monthly(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                
+            </fieldset>
+        </form>
+    </div>
     
                 
 
