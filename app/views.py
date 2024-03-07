@@ -91,6 +91,7 @@ def login():
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
+
 @app.route("/logout")
 def logout():
     logout_user()
@@ -106,6 +107,7 @@ def save_profile_picture(form_pic):
     pic.thumbnail(pic_size)
     pic.save(pic_path)
     return pic_name
+
 
 @app.route("/account", methods=['GET', 'POST'])
 @login_required
@@ -129,6 +131,7 @@ def account():
     image_file = url_for('static', filename='pics/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 
+
 @app.route("/post/new", methods=['GET', 'POST'])
 @login_required
 def new_post():
@@ -141,16 +144,19 @@ def new_post():
         return redirect(url_for('home'))
     return render_template('create_post.html', title='New Post', form=form, legend='New Post')
 
+
 @app.route("/classes", methods=['GET', 'POST'])
 @login_required
 def d_class():
     return render_template('classes.html', classes=classes)
+
 
 @app.route("/post/<int:post_id>", methods=['GET', 'POST'])
 @login_required
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post.html', title=post.title, post=post)
+
 
 @app.route("/post/<int:post_id>/edit", methods=['GET', 'POST'])
 @login_required
@@ -170,6 +176,7 @@ def edit_post(post_id):
         form.content.data = post.content
     return render_template('create_post.html', title='Edit Post', form=form, legend='Edit Post')
 
+
 @app.route("/post/<int:post_id>/delete", methods=['POST'])
 @login_required
 def delete_post(post_id):
@@ -179,6 +186,7 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('home'))
+
 
 @app.route("/subscribe", methods=['POST', 'GET'])
 @login_required
