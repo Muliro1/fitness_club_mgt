@@ -1,7 +1,7 @@
 from app import app, db, bcrypt
 from sqlalchemy.event import listen
 from flask import render_template, url_for, flash, redirect, request, abort
-from app.forms import RegistrationForm, LoginForm, AccountUpdateForm, PostForm
+from app.forms import RegistrationForm, LoginForm, AccountUpdateForm, PostForm, SubscriptionForm
 from app.models import User, Post, Physical
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets
@@ -179,4 +179,10 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('home'))
+
+@app.route("/subscribe", methods=['POST', 'GET'])
+@login_required
+def subscribe():
+    form = SubscriptionForm()
+    return render_template('subscriptions.html', form=form)
     
