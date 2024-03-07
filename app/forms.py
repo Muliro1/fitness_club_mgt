@@ -76,8 +76,10 @@ class PostForm(FlaskForm):
 
 class SubscriptionForm(FlaskForm):
     ''' defines the user subscription form'''
-    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
-    email = StringField('email', validators=[DataRequired(), Length(min=2, max=20)])
+    username = StringField('Username', validators=[Length(min=2, max=20)])
+    email = StringField('email', validators=[Length(min=2, max=20)])
     password = PasswordField('Password', validators=[DataRequired()])
     subscription = SelectField(u'Subscription model', choices = [('monthly'), ('annually'), ('bi_annually')])
     submit = SubmitField('subscribe')
+
+    

@@ -2,7 +2,7 @@ from app import app, db, bcrypt
 from sqlalchemy.event import listen
 from flask import render_template, url_for, flash, redirect, request, abort
 from app.forms import RegistrationForm, LoginForm, AccountUpdateForm, PostForm, SubscriptionForm
-from app.models import User, Post, Physical
+from app.models import User, Post, Physical, Monthly, Annually, BiAnnually
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets
 import os
@@ -184,5 +184,24 @@ def delete_post(post_id):
 @login_required
 def subscribe():
     form = SubscriptionForm()
+    if form.validate_on_submit() and bcrypt.check_password_hash(current_user.password, form.password.data):
+        if form.subscription.data == 'monthly':
+            monthly_sub = Monthly(user_id=current_user.id, price=5000)
+            db.session.add(monthly_sub)
+            db.session.commit()
+            flash('successfully subscribed to monthly!!', 'success')
+            return redirect(url_for('home'))
+        elif form.subscription.data == 'annually':
+            annual_sub = Annually(user_id=current_user.id, price=50000)
+            db.session.add(annual_sub)
+            db.session.commit()
+            flash('successfully subscribed to annual subscription!!', 'success')
+            return redirect(url_for('home'))
+        elif form.subscription.data == 'bi_annually':
+            bi_annual_sub = BiAnnually(user_id=current_user.id, price=25000)
+            db.session.add(bi_annual_sub)
+            db.session.commit()
+            flash('successfully subscribed to bi_annual subscription!!', 'success')
+            return redirect(url_for('home'))
     return render_template('subscriptions.html', form=form)
     
