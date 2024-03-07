@@ -42,6 +42,7 @@ SQLAlchemy==2.0.27
 typing_extensions==4.10.0
 Werkzeug==3.0.1
 WTForms==3.1.2
+daraja Mpesa API
 
 ## Link
 https://github.com/Muliro1/fitness_club_mgt
