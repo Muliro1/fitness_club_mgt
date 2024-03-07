@@ -1,49 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Subscription Models</h1>
-    <div class="content-section">
-        <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            <fieldset class="form-group">
-                <div class="form-group col-xs-4">
-                    {{ form.monthly.label(class="form-control-label", style="width: 75%") }}
-                    {% if form.monthly.errors %}
-                        {{ form.monthly(class="form-control form-control-lg is-invalid", style="width: 75%") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.monthly.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.monthly(class="form-control form-control-lg", style="width: 75%") }}
-                    {% endif %}
-                </div>
-                <div class="form-group col-xs-4">
-                    {{ form.annually.label(class="form-control-label", style="width: 75%") }}
-                    {% if form.annually.errors %}
-                        {{ form.annually(class="form-control form-control-lg is-invalid", style="width: 75%") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.annually.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.annually(class="form-control form-control-lg", style="width: 75%") }}
-                    {% endif %}
-                </div>
-                <div class="form-group col-xs">
-                    {{ form.bi_annually.label(class="form-control-label", style="width: 75%") }}
-                    {% if form.bi_annually.errors %}
-                        {{ form.bi_annually(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.annually.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.annually(class="form-control form-control-lg", style="width: 75%") }}
-                    {% endif %}
-                </div>
+    
                 
 
 {% endblock content %}
