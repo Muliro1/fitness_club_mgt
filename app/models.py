@@ -91,11 +91,3 @@ class BiAnnually(db.Model):
     def __repr__(self):
         return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
         
-
-user_1 = User(username='Michael', email='mulirokhaemba@gmail.com', password='nihilpraeteroptimum')
-user_2 = User(username='Khaemba', email='khaemba@gmail.com', password='nihilpraeteroptimum')
-user_3 = User(username='Muliro', email='muliro@gmail.com', password='nihilpraeteroptimum')
-
-sub_monthly = Monthly(user_id=1, price=5000, subscribed_monthly=user_1)
-sub_yearly = Annually(user_id=2, price=50000, subscribed_annually=user_2)
-sub_bi_yearly = BiAnnually(user_id=3, price=25000, subscribed_bi_annually=user_3)
