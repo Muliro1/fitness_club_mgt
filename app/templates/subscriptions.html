@@ -16,7 +16,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.annually(class="form-control form-control-lg") }}
+                        {{ form.annually(class="btn btn-outline-info form-control-lg") }}
                     {% endif %}
                 </div>
                 <div class="form-group">
@@ -30,7 +30,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.bi_annually(class="form-control form-control-lg") }}
+                        {{ form.bi_annually(class="btn btn-outline-info") }}
                     {% endif %}
                 </div>
                 <div class="form-group">
@@ -44,7 +44,7 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.monthly(class="form-control form-control-lg") }}
+                        {{ form.monthly(class="btn btn-outline-info") }}
                     {% endif %}
                 </div>
                 
