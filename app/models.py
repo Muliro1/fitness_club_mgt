@@ -67,7 +67,7 @@ class Monthly(db.Model):
     price = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
+        return f"subscription started on('{self.start_date}') and ends on ('{self.end_date}')"
     
 class Annually(db.Model):
     ''' defines the annual subscription model'''
@@ -78,7 +78,7 @@ class Annually(db.Model):
     price = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
+        return f"subscription started on('{self.start_date}') and ends on ('{self.end_date}')"
     
 class BiAnnually(db.Model):
     '''defines the half yearlysubscription model'''
@@ -89,5 +89,5 @@ class BiAnnually(db.Model):
     price = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return f"started on('{self.start_date}') and ends on ('{self.end_date}')"
+        return f" subscription started on('{self.start_date}') and ends on ('{self.end_date}')"
         
