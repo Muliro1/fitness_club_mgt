@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     {% if current_user.is_authenticated %}
-    <h1 class="media content-section">User Posts</h1>
+    <h1 class="media content-section text-white mb-3">User Posts</h1>
     {% for post in posts %}
         <article class="media content-section">
           <img class="rounded-circle article-img", src="{{ url_for('static', filename='pics/' + post.author.image_file) }}">
