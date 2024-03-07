@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Daily Classes</h1>
     {% for class in classes %}
     <article class="media content-section">
       <div class="media-body">
@@ -13,4 +12,5 @@
       </div>
     </article>
     {% endfor %}
+    <h1 class="text-white mb-3">Daily Classes</h1>
 {% endblock content %}
