@@ -2,56 +2,19 @@ from app import app, db, bcrypt
 from sqlalchemy.event import listen
 from flask import render_template, url_for, flash, redirect, request, abort
 from app.forms import RegistrationForm, LoginForm, AccountUpdateForm, PostForm, SubscriptionForm
-from app.models import User, Post, Physical, Monthly, Annually, BiAnnually
+from app.models import User, Post, Physical, Monthly, Annually, BiAnnually, Schedule
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets
 import os
 from PIL import Image
 
 
-classes = [
-    {
-        'day': 'Monday',
-        'title': 'Zumba dance fitness',
-        'content': 'Dance your way to a fit body',
-        'date_posted': 'April 20, 2018'
-    },
-    {
-        'day': 'Tuesday',
-        'title': 'Step aerobics',
-        'content': 'Aerobics to the rescue!!',
-        'date_posted': 'April 21, 2018'
-    },
-    {
-        'day': 'Wednesday',
-        'title': 'Hike Away',
-        'content': 'If you love hiking, this is for you!!',
-        'date_posted': 'April 21, 2018'
-    },
-    {
-        'day': 'Thursday',
-        'title': 'Pool aerobics',
-        'content': 'Are you ready to get wet in the pool',
-        'date_posted': 'April 21, 2018'
-    },
-    {
-        'day': 'Friday',
-        'title': 'Weight training',
-        'content': 'for the muscle heads!!',
-        'date_posted': 'April 21, 2018'
-    },
-    {
-        'day': 'Saturday',
-        'title': 'Taebo!!',
-        'content': 'Train with some taekwondo and boxing!!!',
-        'date_posted': 'April 21, 2018'
-    }
-]
 
 
 @app.route("/")
 @app.route("/home")
 def home():
+    classes = Schedule.query.all()
     posts = Post.query.all()
     return render_template('home.html', posts=posts, classes=classes)
 
@@ -148,7 +111,7 @@ def new_post():
 @app.route("/classes", methods=['GET', 'POST'])
 @login_required
 def d_class():
-    return render_template('classes.html', classes=classes)
+    return render_template('classes.html')
 
 
 @app.route("/post/<int:post_id>", methods=['GET', 'POST'])

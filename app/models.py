@@ -90,4 +90,14 @@ class BiAnnually(db.Model):
 
     def __repr__(self):
         return f" subscription started on('{self.start_date}') and ends on ('{self.end_date}')"
+    
+class Schedule(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    day = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    time = db.Column(db.String(100), nullable=False)
+
+
+
         
