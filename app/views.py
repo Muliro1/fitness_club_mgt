@@ -111,7 +111,8 @@ def new_post():
 @app.route("/classes", methods=['GET', 'POST'])
 @login_required
 def d_class():
-    return render_template('classes.html')
+    classes = Schedule.query.all()
+    return render_template('classes.html', classes=classes)
 
 
 @app.route("/post/<int:post_id>", methods=['GET', 'POST'])
