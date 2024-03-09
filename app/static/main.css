@@ -85,3 +85,7 @@ body {
   .list-group-item list-group-item-light:hover {
     color: burlywood;
   }
+
+  .alert-message {
+    color: greenyellow;
+  }
