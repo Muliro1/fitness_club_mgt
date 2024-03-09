@@ -3,7 +3,8 @@ from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FloatField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from app.models import User
+
+
 
 
 class RegistrationForm(FlaskForm):
@@ -65,21 +66,11 @@ class AccountUpdateForm(FlaskForm):
             email = User.query.filter_by(email=email.data).first()
             if email:
                 raise ValidationError('Email is already taken, please choose a different one.')
-
             
-class PostForm(FlaskForm):
-    """defines the user post form for posting
-    on the site"""
-    title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
-    submit = SubmitField('Post')
-
 class SubscriptionForm(FlaskForm):
     ''' defines the user subscription form'''
     username = StringField('Username', validators=[Length(min=2, max=20)])
-    email = StringField('email', validators=[Length(min=2, max=20)])
+    email = StringField('Email', validators=[Length(min=2, max=20)])
     password = PasswordField('Password', validators=[DataRequired()])
     subscription = SelectField(u'Subscription model', choices = [('monthly'), ('annually'), ('bi_annually')])
-    submit = SubmitField('subscribe')
-
-    
+    submit = SubmitField('Subscribe')
