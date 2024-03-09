@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for class in classes %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ class.title }}</a>
+          <small class="text-muted">{{ class.day }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ class.description }}</a></h2>
+        <p class="article-content">{{ class.time }}</p>
+      </div>
+    </article>
+    {% endfor %}
+    <h1 class="text-white mb-3">Daily Classes</h1>
+{% endblock content %}

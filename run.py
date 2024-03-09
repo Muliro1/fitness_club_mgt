@@ -1,6 +1,5 @@
-from flask import Flask
-from app import app
+from app import app, db
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, Worl!</p>"
+
+if __name__ == "__main__":
+    app.run(debug=True)
