@@ -5,6 +5,8 @@ from flask_login import LoginManager
 
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fitness.db'
+app.config['SECRET_KEY'] = 'relapse'
 app.config.from_object('config')
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
