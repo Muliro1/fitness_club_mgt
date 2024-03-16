@@ -1,12 +1,148 @@
-{% extends "layout.html" %}
-{% block content %}
-<div class=" text-white mb-3">
-    <h1 class=" text-white mb-3">About Page</h1>
-    <p >At Gym and Fitness, we believe that fitness and wellbeing are the cornerstones of a full and vibrant life.
-         Established in 2024, we began our journey as a family-owned business dedicated to providing exceptional gym equipment at affordable prices.
-         But, we dreamed bigger than just being an ordinary fitness equipment supplier; we aspired to lead the industry.
-         Our real success lies in the thousands of customers we've empowered to live longer, more joyful, and healthier lives. We're more than just a fitness company – we're your partners in health, your cheerleaders on the sideline, 
-         motivating you to reach your personal fitness goals. Embrace the fitness journey with us and see how it transforms your world.</p>
-         <h2 class=" text-white mb-3">OUR VALUES</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+        <title>Get Fit Gym and Spa</title>
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Get Fit Gym and Spa</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="#">Home</a>
+              <a class="nav-item nav-link" href="#">About</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                  <a class="nav-item nav-link" href="#">Logout</a>
+                  <a class="nav-item nav-link" href="#">Daily Classes</a>
+                  <a class="nav-item nav-link" href="#">Login</a>
+                  <a class="nav-item nav-link" href="#">Register</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class=" text-white mb-3">
+            <h1 class="text-white mb-3 col-md-12">Subscribe and get access to our Facilities!!</h1>
+            <h3 class="text-muted mb-3">Olympic size pool</h3>
+            <img src="{{ url_for('static', filename='pool.avif') }}" alt="pool" class="img-fluid  rounded-top rounded-bottom rounded-right rounded-left">
+            <h3 class="text-muted mb-3">World Class Gym Facilities</h3>
+            <img src="{{ url_for('static', filename='pool.avif') }}" alt="gym" class="img-fluid rounded-top rounded-bottom rounded-right rounded-left">
+            <h3 class="text-white mb-3">About</h3>
+            <p class="col-md-16 text-muted">At Gym and Fitness, we believe that fitness and wellbeing are the cornerstones of a full and vibrant life.
+                 Established in 2024, we began our journey as a family-owned business dedicated to providing exceptional gym equipment at affordable prices.
+                 But, we dreamed bigger than just being an ordinary fitness equipment supplier; we aspired to lead the industry.
+                 Our real success lies in the thousands of customers we've empowered to live longer, more joyful, and healthier lives. We're more than just a fitness company – we're your partners in health, your cheerleaders on the sideline, 
+                 motivating you to reach your personal fitness goals. Embrace the fitness journey with us and see how it transforms your world.</p>
+        </div>
+        </div>
+        <div class="col-md-4">
+          <div class="content-section ">
+            <h3 class="text-white mb-3">Our Subscription models</h3>
+            <p class='text-muted text-white mb-3'>Here are the subscription models currently available, join now!! Once subscribed, you have access to all our classes for as long as the subscription is active!!!</p>
+              <ul class="list-group text-white mb-3" style="width: 100%">
+                <li class="list-group-item list-group-item-light">Daily Subscription Coming Soon!!</li>
+                <li class="list-group-item list-group-item-light">Weekly subscription Coming soon!!!</li>
+                <li class="list-group-item list-group-item-light">Monthly subscription@ksh 2500</li>
+                <li class="list-group-item list-group-item-light">Bi-Annual subscription @ksh 5000</li>
+                <li class="list-group-item list-group-item-light">Annual subscription @ksh 9000</li>
+              </ul>
+              <div>
+                <a class="list-group-item list-group-item-light" href="#">Subscribe</a>
+                <p><a href="#">Sign up</a> to be able to subscribe to our Models</p>
+              </div>
+          </div>
+          <div class="content-section ">
+            <h3 class="text-white mb-3">Daily class Schedule</h3>
+            <p class='text-muted text-white mb-3'>Here are Our Daily Classes</p>
+              <ul class="list-group text-white mb-3" style="width: 100%">
+                <li class="list-group-item list-group-item-light">Monday Zumba Class</li>
+                <li class="list-group-item list-group-item-light">Tuesday Pool Aerobics Class</li>
+                <li class="list-group-item list-group-item-light">Wednesday Calisthenics and weight training Class</li>
+                <li class="list-group-item list-group-item-light">Thursday Hiking Outdoors</li>
+                <li class="list-group-item list-group-item-light">Friday Step Aerobics class</li>
+              </ul>
+              <div>
+                <a class="list-group-item list-group-item-light" href="#">Subscribe</a>
+                <p><a href="#">Sign up</a> And get Access to all classes!!</p>
+              </div>
+          </div>
+          <div class="text-md-end  col-md-16">
+          <h2 class=" text-white mb-3">DEVELOPED BY</h2>
+          <h3 class="text-white mb-3">Michael Muliro Khaemba.</h3>
+          <p class="text-muted mb-3 ">I am a fullstack software engineer with a focus on the backend 
+           <a href="https://www.linkedin.com/in/michael-muliro-064365124/">LinkedIn Profile.</a>
+           <a href="https://github.com/Muliro1?tab=repositories">Github Profile.</a>
+           <a href="https://twitter.com/Muliro_Khaemba">Twitter Profile.</a>
+          </p>
+          <p class="text-md-end">
+            <h3 class="text-white mb-3">Wamalwa Nelson.</h3>
+            <p class="text-muted mb-3">I am an experienced System Support Specialist and a Software Engineering Enthusiast with a demonstrated history of working in the information technology and services industry.</p>
+            <a href="https://www.linkedin.com/in/wamalwanelson/">LinkedIn Profile.</a>
+            <a href="https://github.com/nelsonwamalwa">Github Profile.</a>
+            <a href="https://twitter.com/WamalwaSNelson">Twitter Profile.</a>
+          </p>
+          </div>
+          <h4 class="text-primary">To view the deployed site, click this button</h4>
+          <li><a href="https://getfit.muliro.tech"><button type="button" class="btn btn-primary">Deployed</button></a></li>
+        </div>
+       
+      <!-- FOOTER -->
+    <footer class="w-100 py-4 flex-shrink-0">
+      <div class="container py-4">
+          <div class="row gy-4 gx-5">
+              <div class="col-lg-4 col-md-6">
+                  <h5 class="h1 text-white">Location</h5>
+                  <p class="small text-muted">Getfit gym and spa is located in Nairobi in the lush neighbourhood of lavington</p>
+                  <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">Getfit.com</a></p>
+              </div>
+              <div class="col-lg-2 col-md-6">
+                  <h5 class="text-white mb-3">Quick links</h5>
+                  <ul class="list-unstyled text-muted">
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="https://github.com/Muliro1/fitness_club_mgt">Github Repo</a></li>
+                      <li><a href="https://getfit.muliro.tech"><button type="button" class="btn btn-primary">Deployed</button></a></li>
+                  </ul>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                  <h5 class="text-white mb-3">Newsletter</h5>
+                  <p class="small text-muted">Subscribe to our Newsletter to stay upto date on our latest events.</p>
+                  <form action="#">
+                      <div class="input-group mb-3">
+                          <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                          <button class="btn btn-primary" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </footer>
 </div>
-{% endblock content %}
+    </main>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
