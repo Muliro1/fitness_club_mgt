@@ -97,5 +97,10 @@ def subscribe():
 @users.route("/classes", methods=['GET', 'POST'])
 @login_required
 def d_class():
+    monday_class = Schedule(day='Monday', title='Zumba Dance!!', description='Dance Your Way to fitness', time='8.00 am to 10.00 am')
+    tuesday_class = Schedule(day='Tuesday', title='Zumba Dance!!', description='Dance Your Way to fitness', time='8.00 am to 10.00 am')
+    wednesday_class = Schedule(day='Wednesday', title='Zumba Dance!!', description='Dance Your Way to fitness', time='8.00 am to 10.00 am')
+    thursday_class = Schedule(day='Thursday', title='Zumba Dance!!', description='Dance Your Way to fitness', time='8.00 am to 10.00 am')
+    mfriday_class = Schedule(day='Friday', title='Zumba Dance!!', description='Dance Your Way to fitness', time='8.00 am to 10.00 am')
     classes = Schedule.query.all()
     return render_template('classes.html', classes=classes)
