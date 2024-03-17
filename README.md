@@ -20,10 +20,16 @@ type the command source fitness/bin/activate.  #make sure you are in the root fo
 
 * [Usage](#usage) 
 
-* [Questions](#Questions)
+### Dependencies :couple:
+| Tool/Library                                                                       | Version |
+| ---------------------------------------------------------------------------------- | ------- |
+| [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/)    | ^3.1.1  |
+| [Flask-WTF](https://flask-wtf.readthedocs.io/en/1.2.x/)                            | ^1.2.1 |
+| [Bootstrap](https://getbootstrap.com/)                                             | ^4.2.1  |
+| [SQLAlchemy](https://www.sqlalchemy.org/)                                          | ^0.13.3 |
+| [Flask-Bcrypt](https://flask-bcrypt.readthedocs.io/en/1.0.1/)                      | ^9.11.2 |
+view the full list of dependencies below
 
-
-## TechUsed
 bcrypt==4.1.2
 blinker==1.7.0
 click==8.1.7
@@ -32,7 +38,6 @@ email_validator==2.1.1
 Flask==3.0.2
 Flask-Bcrypt==1.0.1
 Flask-Login==0.6.3
-Flask-SQLAlchemy==3.1.1
 Flask-WTF==1.2.1
 greenlet==3.0.3
 idna==3.6
