@@ -70,5 +70,9 @@ For questions about the project contact Muliro1 or directly at mulirokhaemba@gma
 - **Michael Muliro** <[Muliro1](https://github.com/Muliro1)>
 - **Wamalwa Nelson** <[nelsonwamalwa](https://github.com/nelsonwamalwa)>
 
+## License :lock:
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
 
 
