@@ -12,7 +12,7 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     """
-    defines the user table within the database
+    defines the user table within the databas
     """
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
