@@ -6,9 +6,9 @@ import mysql.connector
 
 
 app = Flask(__name__)
-mydb = mysql.connector.connect(host='localhost', user='muliro', passwd='relapse')
+mydb = mysql.connector.connect(host='localhost', user='muliro', passwd='nihilpraeteroptimum')
 cur = mydb.cursor()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://muliro:relapse@localhost/fitness'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://muliro:nihilpraeteroptimum@localhost/fitness'
 app.config['SECRET_KEY'] = 'relapse'
 app.config.from_object('config')
 db = SQLAlchemy(app)
