@@ -49,8 +49,8 @@ class Post(db.Model):
 class Physical(db.Model):
     """defines the physical table within the database"""
     id = db.Column(db.Integer, primary_key=True)
-    weight = db.Column(db.Integer, nullable=False)
-    height = db.Column(db.Integer, nullable=False)
+    weight = db.Column(db.Double, nullable=False)
+    height = db.Column(db.Double, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     bmi = db.Column(db.Integer, nullable=False)
 

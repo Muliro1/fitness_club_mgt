@@ -53,8 +53,8 @@ def account():
         if form.picture.data:
             pic_file = save_profile_picture(form.picture.data)
             current_user.image_file = pic_file
-        bmi = form.weight.data / form.height.data ** 2
-        physical = Physical(weight=form.weight.data, height=form.height.data, user_id=current_user.id, bmi=bmi)
+        bmi = form.weight.data / (form.height.data ** 2)
+        physical = Physical(weight=float(form.weight.data), height=float(form.height.data), user_id=current_user.id, bmi=bmi)
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.add(physical)
