@@ -216,8 +216,8 @@ def subscribe():
             },
             ],
         mode='subscription',
-        success_url='http://127.0.0.1:5000' + '/success.html',
-        cancel_url='http://127.0.0.1:5000' + '/cancel.html',
+        success_url='https://fitness-club-mgt-1.onrender.com' + '/success.html',
+        cancel_url='https://fitness-club-mgt-1.onrender.com' + '/cancel.html',
         )
         except Exception as e:
                 return str(e)
