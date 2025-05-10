@@ -215,7 +215,7 @@ def subscribe():
                     'quantity': 1,
             },
             ],
-        mode='recurring',
+        mode='subscription',
         success_url='http://127.0.0.1:5000' + '/success.html',
         cancel_url='http://127.0.0.1:5000' + '/cancel.html',
         )
