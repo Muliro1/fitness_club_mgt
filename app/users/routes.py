@@ -5,8 +5,10 @@ from app.users.forms import RegistrationForm, LoginForm, AccountUpdateForm, Subs
 from app.models import User, Post, Physical, Monthly, Annually, BiAnnually, Schedule
 from flask_login import login_user, current_user, logout_user, login_required
 from app.users.utils import save_profile_picture
+import stripe
+import os
 
-
+stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")
 users = Blueprint('users', __name__)
 
 @users.route("/register", methods=['GET', 'POST'])
@@ -192,14 +194,33 @@ def subscribe():
         # Create a new subscription object with the correct price
         if subscription_type == 'monthly':
             subscription = Monthly(user_id=current_user.id, price=5000)
+            price_id = "price_1RNMKEQ21kVJaE9pzs7mrsJS"
         elif subscription_type == 'annually':
             subscription = Annually(user_id=current_user.id, price=50000)
+            price_id = "price_1RNMKoQ21kVJaE9pR8qLoPe8"
         elif subscription_type == 'bi_annually':
             subscription = BiAnnually(user_id=current_user.id, price=25000)
+            price_id = "price_1RNMLNQ21kVJaE9pb55H7O2C"
         else:
             # If the subscription type is invalid, flash an error and redirect back
             flash('Invalid subscription type. Please try again.', 'danger')
             return redirect(url_for('users.subscribe'))
+        
+        try:
+            checkout_session = stripe.checkout.Session.create(
+            line_items=[
+            {
+                    # Provide the exact Price ID (for example, price_1234) of the product you want to sell
+                    'price': price_id,
+                    'quantity': 1,
+            },
+            ],
+        mode='recurring',
+        success_url='http://127.0.0.1:5000' + '/success.html',
+        cancel_url='http://127.0.0.1:5000' + '/cancel.html',
+        )
+        except Exception as e:
+                return str(e)
 
         # Add the subscription to the session and commit the changes
         db.session.add(subscription)
@@ -207,7 +228,7 @@ def subscribe():
 
         # Flash a success message and redirect to the home page
         flash(f'Subscribed to {subscription_type} successfully!', 'success')
-        return redirect(url_for('main.home'))
+        return redirect(checkout_session.url, code=303)
 
     # If the request is a GET request, render the 'subscriptions.html' template
     # with the subscription form
