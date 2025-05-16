@@ -248,7 +248,7 @@ def d_class():
     # Render the 'classes.html' template with the list of classes
     return render_template('classes.html', classes=classes)
 
-@users.route("/cancel", methods=['GET', 'POST'])
+@app.route("/cancel", methods=['GET', 'POST'])
 @login_required
 def cancel():
     """
@@ -259,7 +259,7 @@ def cancel():
     # Render the 'classes.html' template with the list of classes
     return render_template('cancel.html')
 
-@users.route("/success", methods=['GET', 'POST'])
+@app.route("/success", methods=['GET', 'POST'])
 @login_required
 def success():
     """
@@ -270,7 +270,7 @@ def success():
     # Render the 'classes.html' template with the list of classes
     return render_template('success.html')
 
-@users.route("/checkout", methods=['GET', 'POST'])
+@app.route("/checkout", methods=['GET', 'POST'])
 @login_required
 def checkout():
     """
