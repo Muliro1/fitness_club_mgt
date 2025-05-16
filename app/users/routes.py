@@ -247,3 +247,36 @@ def d_class():
 
     # Render the 'classes.html' template with the list of classes
     return render_template('classes.html', classes=classes)
+
+@users.route("/cancel", methods=['GET', 'POST'])
+@login_required
+def cancel():
+    """
+    Route for displaying a list of all classes.
+    """
+    # Get all the classes from the database
+
+    # Render the 'classes.html' template with the list of classes
+    return render_template('cancel.html')
+
+@users.route("/success", methods=['GET', 'POST'])
+@login_required
+def success():
+    """
+    Route for displaying a list of all classes.
+    """
+    # Get all the classes from the database
+
+    # Render the 'classes.html' template with the list of classes
+    return render_template('success.html')
+
+@users.route("/checkout", methods=['GET', 'POST'])
+@login_required
+def checkout():
+    """
+    Route for displaying a list of all classes.
+    """
+    # Get all the classes from the database
+
+    # Render the 'classes.html' template with the list of classes
+    return render_template('checkout.html')
