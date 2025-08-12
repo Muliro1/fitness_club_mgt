@@ -33,3 +33,7 @@ typing_extensions==4.10.0
 urllib3==2.4.0
 Werkzeug==3.0.1
 WTForms==3.1.2
+# AI Chatbot dependencies
+groq==0.6.0
+openai>=1.12.0
+python-dotenv>=1.0.0

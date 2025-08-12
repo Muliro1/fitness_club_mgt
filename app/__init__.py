@@ -4,7 +4,11 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import mysql.connector
 from flask_migrate import Migrate
+import os
+from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv('config.env')
 
 app = Flask(__name__)
 #mydb = mysql.connector.connect(host='localhost', user='muliro', passwd='nihilpraeteroptimum')
@@ -25,13 +29,11 @@ from app import  models
 from app.users.routes import users
 from app.posts.routes import posts
 from app.main.routes import main
+from app.chatbot.routes import chatbot
 
 app.register_blueprint(users)
 app.register_blueprint(posts)
 app.register_blueprint(main)
-
-
-
-
+app.register_blueprint(chatbot)
 
 # Now we can access the configuration variables via app.config["VAR_NAME"].
