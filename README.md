@@ -1,7 +1,7 @@
 
 # Gym management web app
 
-![Landing Page](https://muliro1.github.io)
+![Landing Page](https://fitness-club-mgt-1.onrender.com/)
 
 ## Description
 As people are becoming health conscious nowadays, a significant increase can be seen among the members at various Fitness & Health Clubs. However, it is difficult for the fitness club owners to manually manage the admission entries, keep data of new & old members, scheduling events, etc. 
