@@ -48,19 +48,21 @@
     </div>
 </div>
 
+// ...existing code...
 <style>
 .chatbot-container {
     max-width: 800px;
     margin: 2rem auto;
-    background: white;
+    background: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 30px rgba(103, 78, 162, 0.08);
     overflow: hidden;
+    border: 1px solid rgba(102,126,234,0.06);
 }
 
 .chatbot-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    color: #fff;
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -70,6 +72,7 @@
 .chatbot-header h2 {
     margin: 0;
     font-size: 1.5rem;
+    letter-spacing: 0.2px;
 }
 
 .provider-selector {
@@ -81,18 +84,20 @@
 .provider-selector label {
     margin: 0;
     font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
 }
 
 .provider-selector select {
-    background: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.3);
-    color: white;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff;
     border-radius: 6px;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.6rem;
+    min-width: 120px;
 }
 
 .provider-selector select option {
-    background: white;
+    background: #fff;
     color: #333;
 }
 
@@ -100,9 +105,10 @@
     height: 500px;
     overflow-y: auto;
     padding: 1rem;
-    background: #f8f9fa;
+    background: linear-gradient(180deg, #f7f8fb 0%, #fbfbfe 100%);
 }
 
+/* message layout */
 .message {
     margin-bottom: 1rem;
     display: flex;
@@ -119,31 +125,39 @@
 }
 
 .message-content {
-    background: white;
+    background: #ffffff;
     padding: 1rem;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 18px rgba(102, 126, 234, 0.06);
     max-width: 70%;
     position: relative;
+    border: 1px solid rgba(112, 97, 195, 0.06);
 }
 
+/* user bubble uses platform gradient */
 .user-message .message-content {
-    background: #007bff;
-    color: white;
+    background: linear-gradient(135deg, rgba(102,126,234,1) 0%, rgba(118,75,162,1) 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 22px rgba(102,126,234,0.14);
+    border: none;
 }
 
+/* bot bubble with subtle purple accent */
 .bot-message .message-content {
-    background: white;
-    color: #333;
+    background: #ffffff;
+    color: #2e2e3a;
+    border-left: 4px solid rgba(118,75,162,0.12);
 }
 
+/* icon color */
 .message-content i {
     margin-right: 0.5rem;
-    color: #667eea;
+    color: #6f5bd7;
+    font-size: 1.05rem;
 }
 
 .user-message .message-content i {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.9);
 }
 
 .message-content p {
@@ -155,10 +169,11 @@
     padding-left: 1.5rem;
 }
 
+/* input area */
 .chat-input-container {
     padding: 1rem;
-    background: white;
-    border-top: 1px solid #e9ecef;
+    background: #ffffff;
+    border-top: 1px solid rgba(102,126,234,0.06);
 }
 
 .input-group {
@@ -169,29 +184,34 @@
 
 #message-input {
     flex: 1;
-    border: 2px solid #e9ecef;
+    border: 2px solid rgba(102,126,234,0.06);
     border-radius: 8px;
     padding: 0.75rem;
     font-size: 1rem;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #fbfbfe;
 }
 
 #message-input:focus {
-    border-color: #667eea;
+    border-color: rgba(102,126,234,0.6);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 4px rgba(102,126,234,0.08);
 }
 
 #send-button {
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     font-weight: 600;
-    transition: all 0.3s;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
 }
 
 #send-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(102,126,234,0.18);
+    opacity: 0.98;
 }
 
 .chat-actions {
@@ -200,11 +220,23 @@
     align-items: center;
 }
 
+#clear-chat {
+    color: #6f5bd7;
+    border-color: rgba(111,91,215,0.12);
+}
+
+#clear-chat:hover {
+    color: #4b2fa6;
+    background: rgba(111,91,215,0.06);
+}
+
+/* character count */
 .character-count {
     font-size: 0.8rem;
     color: #6c757d;
 }
 
+/* typing indicator styles */
 .typing-indicator {
     display: flex;
     align-items: center;
@@ -221,7 +253,7 @@
 .typing-dots span {
     width: 6px;
     height: 6px;
-    background: #6c757d;
+    background: #667eea;
     border-radius: 50%;
     animation: typing 1.4s infinite ease-in-out;
 }
@@ -234,6 +266,7 @@
     40% { transform: scale(1); opacity: 1; }
 }
 
+/* responsive tweaks */
 @media (max-width: 768px) {
     .chatbot-container {
         margin: 1rem;
@@ -255,6 +288,7 @@
     }
 }
 </style>
+// ...existing code...
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
