@@ -13,12 +13,23 @@
   --shadow-soft: 0 6px 30px rgba(103, 78, 162, 0.08);
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   background: linear-gradient(180deg, #f7f8fb 0%, #efeaf8 45%, #fbfbfe 100%);
   background-attachment: fixed;
   color: var(--text-main);
   margin-top: 5rem;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -197,48 +208,51 @@ a.list-group-item-light:hover {
   box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
 }
 
-/* Footer */
-footer {
-  margin-top: 3rem;
+/* Footer — full-width bar pinned to page bottom */
+.site-footer,
+footer.site-footer {
+  width: 100%;
+  margin-top: auto;
+  flex-shrink: 0;
   background: linear-gradient(135deg, var(--purple-start) 0%, var(--purple-end) 100%);
-  border-radius: 12px 12px 0 0;
+  border-radius: 0;
   box-shadow: 0 -6px 24px rgba(103, 78, 162, 0.12);
 }
 
-footer .text-white,
-footer h5 {
+.site-footer .text-white,
+.site-footer h5 {
   color: #ffffff !important;
 }
 
-footer .text-muted,
-footer .small,
-footer p,
-footer a {
+.site-footer .text-muted,
+.site-footer .small,
+.site-footer p,
+.site-footer a {
   color: rgba(255, 255, 255, 0.85) !important;
 }
 
-footer a:hover {
+.site-footer a:hover {
   color: #ffffff !important;
   text-decoration: underline;
 }
 
-footer .form-control {
+.site-footer .form-control {
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.22);
   color: #fff;
 }
 
-footer .form-control::placeholder {
+.site-footer .form-control::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-footer .btn-primary {
+.site-footer .btn-primary {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: none;
 }
 
-footer .btn-primary:hover {
+.site-footer .btn-primary:hover {
   background: rgba(255, 255, 255, 0.3);
 }
 
