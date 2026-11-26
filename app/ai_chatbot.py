@@ -19,6 +19,8 @@ class AIChatbotService:
         """Load configuration from environment variables"""
         return {
             'groq_api_key': os.getenv('GROQ_API_KEY'),
+            # llama3-8b-8192 and llama-3.1-8b-instant are decommissioned on Groq
+            'groq_model': os.getenv('GROQ_MODEL', 'openai/gpt-oss-20b'),
             'openai_api_key': os.getenv('OPENAI_API_KEY'),
             'ollama_base_url': os.getenv('OLLAMA_BASE_URL', 'http://localhost:11434'),
             'ollama_model': os.getenv('OLLAMA_MODEL', 'llama3.2:3b'),
@@ -92,7 +94,7 @@ class AIChatbotService:
                 
                 # Create chat completion with proper parameters
                 response = client.chat.completions.create(
-                    model="llama3-8b-8192",  # Updated model name
+                    model=self.config['groq_model'],
                     messages=messages,
                     max_tokens=self.config['max_tokens'],
                     temperature=self.config['temperature']
