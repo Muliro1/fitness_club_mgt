@@ -1,98 +1,249 @@
+/* Site theme aligned with AI Fitness Assistant (purple gradient) */
+:root {
+  --purple-start: #667eea;
+  --purple-end: #764ba2;
+  --purple-accent: #6f5bd7;
+  --purple-deep: #4b2fa6;
+  --surface: #ffffff;
+  --surface-soft: #f7f8fb;
+  --surface-input: #fbfbfe;
+  --text-main: #2e2e3a;
+  --text-muted: #6c757d;
+  --border-soft: rgba(102, 126, 234, 0.12);
+  --shadow-soft: 0 6px 30px rgba(103, 78, 162, 0.08);
+}
+
 body {
-    background: #2a2e32;
-    color: #333333;
-    margin-top: 5rem;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    color: #444444;
-  }
-  
-  .bg-steel {
-    background-color: lightslategray;
-  }
-  
-  .site-header .navbar-nav .nav-link {
-    color: burlywood;
-  }
-  
-  .site-header .navbar-nav .nav-link:hover {
-    color:gray;
-  }
-  
-  .site-header .navbar-nav .nav-link.active {
-    font-weight: 600;
-  }
-  
-  .content-section {
-    background: #ffffff28;
-    padding: 10px 20px;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
-    margin-bottom: 20px;
-  }
-  .content-section:hover {
-    color:burlywood
-  }
-  
-  .article-title {
-    color: grey;
-  }
-  
-  a.article-title:hover {
-    color: blueviolet;
-    text-decoration: none;
-  }
-  
-  .article-content {
-    white-space: pre-line;
-  }
-  
-  .article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
-  }
-  
-  .article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
-  }
-  
-  .article-metadata a:hover {
-    color: gray;
-    text-decoration: none;
-  }
-  
-  .article-svg {
-    width: 25px;
-    height: 25px;
-    vertical-align: middle;
-  }
-  
-  .account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-    margin-bottom: 16px;
-  }
-  
-  .account-heading {
-    font-size: 2.5rem;
-  }
+  background: linear-gradient(180deg, #f7f8fb 0%, #efeaf8 45%, #fbfbfe 100%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  margin-top: 5rem;
+  min-height: 100vh;
+}
 
-  .list-group-item list-group-item-light:hover {
-    color: burlywood;
-  }
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-main);
+}
 
-  .alert-message {
-    color: greenyellow;
-  }
+a {
+  color: var(--purple-accent);
+}
 
+a:hover {
+  color: var(--purple-deep);
+}
 
-  img {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    max-width: 100%;
-  }
+/* Navbar — same gradient as chatbot header */
+.bg-steel {
+  background: linear-gradient(135deg, var(--purple-start) 0%, var(--purple-end) 100%) !important;
+  box-shadow: 0 4px 18px rgba(102, 126, 234, 0.25);
+  border: none;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+  opacity: 0.95;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Cards / content panels */
+.content-section {
+  background: var(--surface);
+  padding: 16px 22px;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-soft);
+  color: var(--text-main);
+}
+
+.content-section:hover {
+  color: var(--text-main);
+  box-shadow: 0 8px 28px rgba(102, 126, 234, 0.12);
+}
+
+/* Keep readable text inside light cards (templates used text-white for dark theme) */
+.content-section .text-white,
+.content-section .text-muted,
+main .text-white,
+.media.content-section,
+.media.content-section .text-white,
+.media.content-section .text-muted {
+  color: var(--text-main) !important;
+}
+
+.content-section .text-muted,
+main .text-muted {
+  color: var(--text-muted) !important;
+}
+
+.article-title {
+  color: var(--purple-accent);
+}
+
+a.article-title:hover {
+  color: var(--purple-deep);
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+  color: var(--text-main);
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.article-metadata a {
+  color: var(--purple-accent);
+}
+
+.article-metadata a:hover {
+  color: var(--purple-deep);
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+  color: var(--text-main);
+}
+
+/* Sidebar list items */
+.list-group-item {
+  border-color: var(--border-soft) !important;
+  color: var(--text-main);
+}
+
+.list-group-item-light {
+  background-color: var(--surface-soft) !important;
+}
+
+.list-group-item-light:hover,
+a.list-group-item-light:hover {
+  background-color: rgba(102, 126, 234, 0.08) !important;
+  color: var(--purple-deep);
+}
+
+.alert-message {
+  color: var(--purple-accent);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--purple-start) 0%, var(--purple-end) 100%);
+  border: none;
+  box-shadow: 0 8px 22px rgba(102, 126, 234, 0.18);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background: linear-gradient(135deg, #5a6fd6 0%, #6a4194 100%);
+  border: none;
+  box-shadow: 0 10px 28px rgba(102, 126, 234, 0.28);
+}
+
+.btn-outline-info,
+.btn-outline-secondary {
+  color: var(--purple-accent);
+  border-color: rgba(111, 91, 215, 0.35);
+}
+
+.btn-outline-info:hover,
+.btn-outline-secondary:hover {
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple-start) 0%, var(--purple-end) 100%);
+  border-color: transparent;
+}
+
+/* Forms */
+.form-control:focus {
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  background: linear-gradient(135deg, var(--purple-start) 0%, var(--purple-end) 100%);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -6px 24px rgba(103, 78, 162, 0.12);
+}
+
+footer .text-white,
+footer h5 {
+  color: #ffffff !important;
+}
+
+footer .text-muted,
+footer .small,
+footer p,
+footer a {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+footer a:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
+
+footer .form-control {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+footer .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+footer .btn-primary {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+}
+
+footer .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+img {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  max-width: 100%;
+}
